@@ -48,7 +48,7 @@ Cette API facilitera le suivi des sinistres et optimisera les processus métiers
 | Méthode | Endpoint | Description |
 |---------|---------|-------------|
 | **POST** | `/api/v1/sinistres` | Déclarer un sinistre |
-| **GET** | `/api/v1/sinistres?client_id={id}` | Récupérer tous les sinistres d’un client |
+| **GET** | `/api/v1/sinistres/{id}` | Récupérer tous les sinistres d’un client |
 | **GET** | `/api/v1/sinistres/{sinistre_id}` | Récupérer les détails d’un sinistre |
 | **PUT** | `/api/v1/sinistres/{sinistre_id}` | Modifier un sinistre (ajout d’infos) |
 
