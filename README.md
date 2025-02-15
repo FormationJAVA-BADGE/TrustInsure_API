@@ -36,7 +36,7 @@ Cette API facilitera le suivi des sinistres et optimisera les processus métiers
 | **Langage**     | Java (Spring Boot) ou Python (FastAPI) |
 | **Base de données** | PostgreSQL ou MySQL |
 | **Format des échanges** | JSON |
-| **Gestion des fichiers** | Stockage des documents sur AWS S3 ou Google Cloud Storage |
+| **Gestion des fichiers** | Stockage des documents |
 | **Gestion des délais** | Utilisation de `java.time` (Spring) ou `datetime` (Python) |
 
 ---
