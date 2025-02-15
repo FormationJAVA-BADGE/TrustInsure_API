@@ -47,37 +47,37 @@ Cette API facilitera le suivi des sinistres et optimisera les processus métiers
 
 | Méthode | Endpoint | Description |
 |---------|---------|-------------|
-| **POST** | `/sinistres` | Déclarer un sinistre |
-| **GET** | `/sinistres?client_id={id}` | Récupérer tous les sinistres d’un client |
-| **GET** | `/sinistres/{sinistre_id}` | Récupérer les détails d’un sinistre |
-| **PUT** | `/sinistres/{sinistre_id}` | Modifier un sinistre (ajout d’infos) |
+| **POST** | `/api/v1/sinistres` | Déclarer un sinistre |
+| **GET** | `/api/v1/sinistres?client_id={id}` | Récupérer tous les sinistres d’un client |
+| **GET** | `/api/v1/sinistres/{sinistre_id}` | Récupérer les détails d’un sinistre |
+| **PUT** | `/api/v1/sinistres/{sinistre_id}` | Modifier un sinistre (ajout d’infos) |
 
 ### **📌 Gestion des Expertises**  
 
 | Méthode | Endpoint | Description |
 |---------|---------|-------------|
-| **POST** | `/sinistres/{sinistre_id}/expert` | Assigner un expert à un sinistre |
-| **GET** | `/experts/{expert_id}/sinistres` | Voir les dossiers d’un expert |
+| **POST** | `/api/v1/sinistres/{sinistre_id}/expert` | Assigner un expert à un sinistre |
+| **GET** | `/api/v1/experts/{expert_id}/sinistres` | Voir les dossiers d’un expert |
 
 ### **📌 Indemnisation et Paiements**  
 
 | Méthode | Endpoint | Description |
 |---------|---------|-------------|
-| **GET** | `/sinistres/{sinistre_id}/indemnisation` | Calculer le montant estimé |
-| **POST** | `/sinistres/{sinistre_id}/payer` | Valider le paiement de l’indemnisation |
+| **GET** | `/api/v1/sinistres/{sinistre_id}/indemnisation` | Calculer le montant estimé |
+| **POST** | `/api/v1/sinistres/{sinistre_id}/payer` | Valider le paiement de l’indemnisation |
 
 ### **📌 Gestion des Litiges**  
 
 | Méthode | Endpoint | Description |
 |---------|---------|-------------|
-| **POST** | `/sinistres/{sinistre_id}/recours` | Soumettre un recours |
-| **GET** | `/sinistres/{sinistre_id}/recours` | Vérifier le statut du recours |
+| **POST** | `/api/v1/sinistres/{sinistre_id}/recours` | Soumettre un recours |
+| **GET** | `/api/v1/sinistres/{sinistre_id}/recours` | Vérifier le statut du recours |
 
 ### **📌 Statistiques et Suivi**  
 
 | Méthode | Endpoint | Description |
 |---------|---------|-------------|
-| **GET** | `/statistiques` | Voir les statistiques des sinistres |
+| **GET** | `/api/v1/statistiques` | Voir les statistiques des sinistres |
 
 ---
 
