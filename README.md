@@ -50,7 +50,7 @@ Cette API facilitera le suivi des sinistres et optimisera les processus métiers
 | **POST** | `/sinistres` | Déclarer un sinistre |
 | **GET** | `/sinistres?client_id={id}` | Récupérer tous les sinistres d’un client |
 | **GET** | `/sinistres/{sinistre_id}` | Récupérer les détails d’un sinistre |
-| **PATCH** | `/sinistres/{sinistre_id}` | Modifier un sinistre (ajout d’infos) |
+| **PUT** | `/sinistres/{sinistre_id}` | Modifier un sinistre (ajout d’infos) |
 
 ### **📌 Gestion des Expertises**  
 
