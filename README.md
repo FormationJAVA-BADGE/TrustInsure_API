@@ -1,8 +1,8 @@
-# 📜 Cahier des Charges - ClaimFlow API
+# Cahier des charges - TrutInsure
 
 ## 1️⃣ Contexte et Objectif  
 
-ClaimFlow API est une solution permettant aux compagnies d’assurance de **gérer les sinistres**, depuis la déclaration jusqu'à l'indemnisation.  
+TrustInsure API est une solution permettant aux compagnies d’assurance de **gérer les sinistres**, depuis la déclaration jusqu'à l'indemnisation.  
 Cette API facilitera le suivi des sinistres et optimisera les processus métiers liés aux expertises, indemnisations et litiges.  
 
 ## 2️⃣ Fonctionnalités Demandées (User Stories)  
@@ -81,14 +81,3 @@ Cette API facilitera le suivi des sinistres et optimisera les processus métiers
 
 ---
 
-## 5️⃣ Livrables  
-
-- **📌 Code source** : Dépôt GitHub public avec un README détaillé.  
-- **📄 Documentation API** : Générée via Swagger/Postman.  
-- **📂 Base de données** : Script SQL pour créer les tables.  
-- **📊 Exemples de cas métiers** : Scénarios de test des règles métiers.  
-
----
-
-🚀 **ClaimFlow API est conçue pour gérer les sinistres avec des règles strictes et un suivi transparent !**  
-🎯 **Besoin d'ajouter quelque chose ?** 😊
