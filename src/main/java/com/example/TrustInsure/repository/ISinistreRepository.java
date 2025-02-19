@@ -9,4 +9,5 @@ public interface ISinistreRepository {
     Sinistre findById(Long id);
     List<Sinistre> findByClientId(Long clientId);
     Sinistre update(Sinistre sinistre);
+    List<Sinistre> findByContratId(Long contratId);
 }

@@ -68,6 +68,8 @@ public class SinistreServiceImpl implements ISinistreService {
         return convertirEnDTO(sinistre);
     }
 
+
+
     @Override
     public List<SinistreDTO> getSinistresParContratId(Long contratId) {
         List<Sinistre> sinistres = sinistreRepository.findByContratId(contratId);
@@ -94,6 +96,8 @@ public class SinistreServiceImpl implements ISinistreService {
         sinistreRepository.update(sinistre);
         return convertirEnDTO(sinistre);
     }
+
+
 
     private SinistreDTO convertirEnDTO(Sinistre sinistre) {
         return new SinistreDTO(

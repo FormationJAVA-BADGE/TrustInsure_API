@@ -54,5 +54,14 @@ public class SinistreRepositoryImpl implements ISinistreRepository {
             throw new RuntimeException("Erreur lors de la mise à jour du sinistre", e);
         }
     }
+
+    @Override
+    public List<Sinistre> findByContratId(Long contratId) {
+        try (Session session = sessionFactory.openSession()) {
+            return session.createQuery("FROM Sinistre s WHERE s.contrat.id = :contratId", Sinistre.class)
+                    .setParameter("contratId", contratId)
+                    .list();
+        }
+    }
 }
 
