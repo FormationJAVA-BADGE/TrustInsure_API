@@ -16,11 +16,9 @@ public class Expertise {
     private String statut; // "En attente", "En cours", "Validé", "Rejeté"
 
     @ManyToOne
-    @JoinColumn(name = "expert_id", nullable = false)
     private Expert expert;
 
     @OneToOne
-    @JoinColumn(name = "sinistre_id", nullable = false)
     private Sinistre sinistre;
 
     public Expertise() {}
