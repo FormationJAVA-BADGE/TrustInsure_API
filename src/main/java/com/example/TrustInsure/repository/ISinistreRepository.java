@@ -1,0 +1,12 @@
+package com.example.TrustInsure.repository;
+
+import com.example.TrustInsure.model.Sinistre;
+
+import java.util.List;
+
+public interface ISinistreRepository {
+    Sinistre save(Sinistre sinistre);
+    Sinistre findById(Long id);
+    List<Sinistre> findByClientId(Long clientId);
+    Sinistre update(Sinistre sinistre);
+}

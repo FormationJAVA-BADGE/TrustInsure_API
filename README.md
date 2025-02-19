@@ -19,27 +19,14 @@ Cette API facilitera le suivi des sinistres et optimisera les processus métiers
 - Un expert peut être assigné à un sinistre nécessitant une validation.  
 - L’API calcule la **date limite d’expertise** en fonction du type de sinistre.  
 
-### ✅ US 4 : Indemnisation et Paiement  
-- L’API calcule l’indemnisation en fonction des garanties du contrat et des franchises.  
-- Le paiement ne peut pas excéder le plafond contractuel.  
 
-### ✅ US 5 : Gestion des Litiges  
+### ✅ US 4 : Gestion des Litiges  
 - Un client peut contester une indemnisation via un **recours**.  
 - L’API impose un **délai maximal de réponse** pour le traitement du litige.  
 
 ---
 
-## 3️⃣ Contraintes Techniques  
 
-| Technologie      | Détails |
-|-----------------|---------|
-| **Langage**     | Java (Spring Boot) ou Python (FastAPI) |
-| **Base de données** | PostgreSQL ou MySQL |
-| **Format des échanges** | JSON |
-| **Gestion des fichiers** | Stockage des documents |
-| **Gestion des délais** | Utilisation de `java.time` (Spring) ou `datetime` (Python) |
-
----
 
 ## 4️⃣ Endpoints de l’API  
 
