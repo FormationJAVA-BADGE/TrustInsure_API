@@ -27,15 +27,15 @@ public class ExpertiseServiceImpl implements IExpertiseService {
 
     @Override
     public ExpertiseDTO assignerExpert(Long sinistreId, Long expertId) {
-        Sinistre sinistre = sinistreRepository.findById(sinistreId);
-        if (sinistre == null) {
-            throw new RuntimeException("Sinistre introuvable.");
-        }
+        Sinistre sinistre = sinistreRepository.findById(sinistreId).orElseThrow(
+                ()-> new RuntimeException("Sinistre introuvable.")
+        );
 
-        Expert expert = expertRepository.findById(expertId);
-        if (expert == null) {
-            throw new RuntimeException("Expert introuvable.");
-        }
+
+        Expert expert = expertRepository.findById(expertId).orElseThrow(
+                ()-> new RuntimeException("Expert introuvable.")
+        );
+
 
         // Définition des délais selon le type de sinistre
         Map<String, Integer> delaisExpertise = new HashMap<>();
@@ -55,10 +55,9 @@ public class ExpertiseServiceImpl implements IExpertiseService {
 
     @Override
     public ExpertiseDTO getExpertiseById(Long expertiseId) {
-        Expertise expertise = expertiseRepository.findById(expertiseId);
-        if (expertise == null) {
-            throw new RuntimeException("Expertise introuvable.");
-        }
+        Expertise expertise = expertiseRepository.findById(expertiseId).orElseThrow(
+                ()-> new RuntimeException("Expertise introuvable.")
+        );
         return convertirEnDTO(expertise);
     }
 

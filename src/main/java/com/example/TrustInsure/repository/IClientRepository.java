@@ -1,14 +1,10 @@
 package com.example.TrustInsure.repository;
 
 import com.example.TrustInsure.model.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface IClientRepository {
-
-    Client findById(Long id);
-
-    List<Client> findALl();
-
-    Client save(Client client);
-}
+@Repository
+public interface IClientRepository extends JpaRepository<Client , Long > { }

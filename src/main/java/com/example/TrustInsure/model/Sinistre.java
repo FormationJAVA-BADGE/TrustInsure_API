@@ -11,6 +11,7 @@ public class Sinistre {
     private Long id;
 
     private String typeSinistre; // Accident, Vol, Incendie...
+
     private LocalDateTime dateSinistre;
     private String description;
     private String statut; // "En attente", "En cours d'expertise", "Indemnisé"

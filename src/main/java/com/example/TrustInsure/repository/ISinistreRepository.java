@@ -1,12 +1,13 @@
 package com.example.TrustInsure.repository;
 
+import com.example.TrustInsure.model.Contrat;
 import com.example.TrustInsure.model.Sinistre;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ISinistreRepository {
-    Sinistre save(Sinistre sinistre);
-    Sinistre findById(Long id);
-    Sinistre update(Sinistre sinistre);
+public interface ISinistreRepository extends JpaRepository<Sinistre,Long>  {
+
+
     List<Sinistre> findByContratId(Long contratId);
 }

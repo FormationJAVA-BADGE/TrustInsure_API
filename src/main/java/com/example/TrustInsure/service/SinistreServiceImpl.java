@@ -36,10 +36,9 @@ public class SinistreServiceImpl implements ISinistreService {
     @Override
     public SinistreDTO creerSinistre(SinistreDTO sinistreDTO) {
         // Vérification du contrat
-        Contrat contrat = contratRepository.findById(sinistreDTO.getContratId());
-        if (contrat == null) {
-            throw new RuntimeException("Contrat introuvable.");
-        }
+        Contrat contrat = contratRepository.findById(sinistreDTO.getContratId()).orElseThrow(
+                ()-> new RuntimeException("Contrat introuvable.")
+        );
 
         // Vérification de la date du sinistre
         if (sinistreDTO.getDateSinistre().isAfter(LocalDateTime.now())) {
@@ -79,22 +78,22 @@ public class SinistreServiceImpl implements ISinistreService {
 
     @Override
     public SinistreDTO getSinistreById(Long sinistreId) {
-        Sinistre sinistre = sinistreRepository.findById(sinistreId);
-        if (sinistre == null) {
-            throw new RuntimeException("Sinistre introuvable.");
-        }
+        Sinistre sinistre = sinistreRepository.findById(sinistreId).orElseThrow(
+                ()-> new RuntimeException("Sinistre introuvable.")
+        );
+
         return convertirEnDTO(sinistre);
     }
 
     @Override
     public SinistreDTO modifierSinistre(Long sinistreId, String updatedStatut) {
-        Sinistre sinistre = sinistreRepository.findById(sinistreId);
-        if (sinistre == null) {
-            throw new RuntimeException("Sinistre introuvable.");
-        }
+        Sinistre sinistre = sinistreRepository.findById(sinistreId).orElseThrow(
+                ()-> new RuntimeException("Sinistre introuvable.")
+        );
+
 
         sinistre.setStatut(updatedStatut);
-        sinistreRepository.update(sinistre);
+        sinistreRepository.save(sinistre);
         return convertirEnDTO(sinistre);
     }
 
