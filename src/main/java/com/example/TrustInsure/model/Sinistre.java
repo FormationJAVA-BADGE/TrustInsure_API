@@ -16,7 +16,8 @@ public class Sinistre {
     private String statut; // "En attente", "En cours d'expertise", "Indemnisé"
 
     @ManyToOne
-    private Client client;
+    @JoinColumn(name = "contrat_id", nullable = false) // ✅ Lien avec un contrat obligatoire
+    private Contrat contrat;
 
     @OneToMany(mappedBy = "sinistre", cascade = CascadeType.ALL)
     private List<Document> documents;
@@ -27,92 +28,42 @@ public class Sinistre {
     @OneToOne(mappedBy = "sinistre", cascade = CascadeType.ALL)
     private Expertise expertise;
 
-    public Sinistre(Expertise expertise, Indemnisation indemnisation, List<Document> documents, Client client, String statut, String description, LocalDateTime dateSinistre, String typeSinistre) {
-        this.expertise = expertise;
-        this.indemnisation = indemnisation;
-        this.documents = documents;
-        this.client = client;
-        this.statut = statut;
-        this.description = description;
-        this.dateSinistre = dateSinistre;
-        this.typeSinistre = typeSinistre;
-    }
+    public Sinistre() {}
 
-    public Sinistre() {
+    public Sinistre(String typeSinistre, LocalDateTime dateSinistre, String description, String statut, Contrat contrat) {
+        this.typeSinistre = typeSinistre;
+        this.dateSinistre = dateSinistre;
+        this.description = description;
+        this.statut = statut;
+        this.contrat = contrat;
     }
 
     // Getters & Setters
 
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public Long getId() {
-        return id;
-    }
+    public String getTypeSinistre() { return typeSinistre; }
+    public void setTypeSinistre(String typeSinistre) { this.typeSinistre = typeSinistre; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public LocalDateTime getDateSinistre() { return dateSinistre; }
+    public void setDateSinistre(LocalDateTime dateSinistre) { this.dateSinistre = dateSinistre; }
 
-    public String getTypeSinistre() {
-        return typeSinistre;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
-    public void setTypeSinistre(String typeSinistre) {
-        this.typeSinistre = typeSinistre;
-    }
+    public String getStatut() { return statut; }
+    public void setStatut(String statut) { this.statut = statut; }
 
-    public LocalDateTime getDateSinistre() {
-        return dateSinistre;
-    }
+    public Contrat getContrat() { return contrat; }
+    public void setContrat(Contrat contrat) { this.contrat = contrat; }
 
-    public void setDateSinistre(LocalDateTime dateSinistre) {
-        this.dateSinistre = dateSinistre;
-    }
+    public List<Document> getDocuments() { return documents; }
+    public void setDocuments(List<Document> documents) { this.documents = documents; }
 
-    public String getDescription() {
-        return description;
-    }
+    public Indemnisation getIndemnisation() { return indemnisation; }
+    public void setIndemnisation(Indemnisation indemnisation) { this.indemnisation = indemnisation; }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getStatut() {
-        return statut;
-    }
-
-    public void setStatut(String statut) {
-        this.statut = statut;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public List<Document> getDocuments() {
-        return documents;
-    }
-
-    public void setDocuments(List<Document> documents) {
-        this.documents = documents;
-    }
-
-    public Indemnisation getIndemnisation() {
-        return indemnisation;
-    }
-
-    public void setIndemnisation(Indemnisation indemnisation) {
-        this.indemnisation = indemnisation;
-    }
-
-    public Expertise getExpertise() {
-        return expertise;
-    }
-
-    public void setExpertise(Expertise expertise) {
-        this.expertise = expertise;
-    }
+    public Expertise getExpertise() { return expertise; }
+    public void setExpertise(Expertise expertise) { this.expertise = expertise; }
 }

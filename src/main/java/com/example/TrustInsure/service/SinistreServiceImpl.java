@@ -1,13 +1,11 @@
 package com.example.TrustInsure.service;
 
 import com.example.TrustInsure.dto.SinistreDTO;
-import com.example.TrustInsure.model.Client;
+import com.example.TrustInsure.model.Contrat;
 import com.example.TrustInsure.model.Document;
 import com.example.TrustInsure.model.Sinistre;
-import com.example.TrustInsure.repository.IClientRepository;
+import com.example.TrustInsure.repository.IContratRepository;
 import com.example.TrustInsure.repository.IDocumentRepository;
-import com.example.TrustInsure.repository.IClientRepository;
-import com.example.TrustInsure.repository.ISinistreRepository;
 import com.example.TrustInsure.repository.ISinistreRepository;
 import org.hibernate.SessionFactory;
 import java.time.LocalDateTime;
@@ -18,26 +16,26 @@ import java.util.stream.Collectors;
 public class SinistreServiceImpl implements ISinistreService {
 
     private final ISinistreRepository sinistreRepository;
-    private final IClientRepository clientRepository;
+    private final IContratRepository contratRepository;
     private final IDocumentRepository documentRepository;
     private final SessionFactory sessionFactory;
 
     public SinistreServiceImpl(ISinistreRepository sinistreRepository,
-                               IClientRepository clientRepository,
+                               IContratRepository contratRepository,
                                IDocumentRepository documentRepository,
                                SessionFactory sessionFactory) {
         this.sinistreRepository = sinistreRepository;
-        this.clientRepository = clientRepository;
+        this.contratRepository = contratRepository;
         this.documentRepository = documentRepository;
         this.sessionFactory = sessionFactory;
     }
 
     @Override
     public SinistreDTO creerSinistre(SinistreDTO sinistreDTO) {
-        // Vérification du client
-        Client client = clientRepository.findById(sinistreDTO.getClientId());
-        if (client == null) {
-            throw new RuntimeException("Client introuvable.");
+        // Vérification du contrat
+        Contrat contrat = contratRepository.findById(sinistreDTO.getContratId());
+        if (contrat == null) {
+            throw new RuntimeException("Contrat introuvable.");
         }
 
         // Vérification de la date du sinistre
@@ -51,9 +49,12 @@ public class SinistreServiceImpl implements ISinistreService {
         sinistre.setDateSinistre(sinistreDTO.getDateSinistre());
         sinistre.setDescription(sinistreDTO.getDescription());
         sinistre.setStatut("En attente de validation");
-        sinistre.setClient(client);
+        sinistre.setContrat(contrat);
 
         // Sauvegarde du sinistre en base
+        sinistre = sinistreRepository.save(sinistre);
+
+        // Ajout des documents
         List<Document> documents = new ArrayList<>();
         if (sinistreDTO.getDocumentsUrls() != null && !sinistreDTO.getDocumentsUrls().isEmpty()) {
             for (String url : sinistreDTO.getDocumentsUrls()) {
@@ -63,14 +64,13 @@ public class SinistreServiceImpl implements ISinistreService {
             documentRepository.saveAll(documents);
         }
 
-
-        // Conversion en DTO avant de retourner la réponse
+        // Retourne le DTO
         return convertirEnDTO(sinistre);
     }
 
     @Override
-    public List<SinistreDTO> getSinistresParClientId(Long clientId) {
-        List<Sinistre> sinistres = sinistreRepository.findByClientId(clientId);
+    public List<SinistreDTO> getSinistresParContratId(Long contratId) {
+        List<Sinistre> sinistres = sinistreRepository.findByContratId(contratId);
         return sinistres.stream().map(this::convertirEnDTO).collect(Collectors.toList());
     }
 
@@ -84,28 +84,28 @@ public class SinistreServiceImpl implements ISinistreService {
     }
 
     @Override
-    public SinistreDTO modifierSinistre(Long sinistreId, String updatedSinistre) {
+    public SinistreDTO modifierSinistre(Long sinistreId, String updatedStatut) {
         Sinistre sinistre = sinistreRepository.findById(sinistreId);
         if (sinistre == null) {
             throw new RuntimeException("Sinistre introuvable.");
         }
 
-        sinistre.setStatut(updatedSinistre);
+        sinistre.setStatut(updatedStatut);
         sinistreRepository.update(sinistre);
         return convertirEnDTO(sinistre);
     }
 
-
-
-     private SinistreDTO convertirEnDTO(Sinistre sinistre) {
+    private SinistreDTO convertirEnDTO(Sinistre sinistre) {
         return new SinistreDTO(
                 sinistre.getId(),
                 sinistre.getTypeSinistre(),
                 sinistre.getDateSinistre(),
                 sinistre.getDescription(),
                 sinistre.getStatut(),
-                sinistre.getClient().getId()
+                sinistre.getContrat().getId(), // Correction : On retourne le contratId et non clientId
+                sinistre.getDocuments() != null ?
+                        sinistre.getDocuments().stream().map(Document::getUrl).collect(Collectors.toList()) :
+                        new ArrayList<>()
         );
     }
-
 }

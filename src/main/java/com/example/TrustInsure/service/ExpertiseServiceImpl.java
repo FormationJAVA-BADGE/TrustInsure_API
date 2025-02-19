@@ -4,6 +4,8 @@ import com.example.TrustInsure.dto.ExpertiseDTO;
 import com.example.TrustInsure.model.Expert;
 import com.example.TrustInsure.model.Expertise;
 import com.example.TrustInsure.model.Sinistre;
+import com.example.TrustInsure.repository.IExpertRepository;
+import com.example.TrustInsure.repository.IExpertiseRepository;
 import com.example.TrustInsure.repository.ISinistreRepository;
 
 import java.time.LocalDateTime;
@@ -15,7 +17,7 @@ public class ExpertiseServiceImpl implements IExpertiseService {
     private final ISinistreRepository sinistreRepository;
     private final IExpertRepository expertRepository;
 
-    public ExpertiseServiceImpl(IExpertiseRepository expertiseRepository, ISinistreRepository sinistreRepository, ExpertRepository expertRepository) {
+    public ExpertiseServiceImpl(IExpertiseRepository expertiseRepository, ISinistreRepository sinistreRepository, IExpertRepository expertRepository) {
         this.expertiseRepository = expertiseRepository;
         this.sinistreRepository = sinistreRepository;
         this.expertRepository = expertRepository;
