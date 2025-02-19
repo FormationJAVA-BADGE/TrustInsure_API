@@ -7,11 +7,13 @@ import com.example.TrustInsure.model.Sinistre;
 import com.example.TrustInsure.repository.IExpertRepository;
 import com.example.TrustInsure.repository.IExpertiseRepository;
 import com.example.TrustInsure.repository.ISinistreRepository;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+@Service
 public class ExpertiseServiceImpl implements IExpertiseService {
     private final IExpertiseRepository expertiseRepository;
     private final ISinistreRepository sinistreRepository;

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ISinistreService {
     SinistreDTO creerSinistre(SinistreDTO sinistre);
-    List<SinistreDTO> getSinistresParContratId(Long clientId);
+    List<SinistreDTO> getSinistresByClientId(Long clientId);
     SinistreDTO getSinistreById(Long sinistreId);
     SinistreDTO modifierSinistre(Long sinistreId, String updatedSinistre);
 }

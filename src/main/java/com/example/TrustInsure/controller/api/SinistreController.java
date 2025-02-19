@@ -29,7 +29,7 @@ public class SinistreController {
 
     @GetMapping("/client/{clientId}")
     public List<SinistreDTO> getSinistresByClient(@PathVariable Long clientId) {
-        return sinistreService.getSinistresParClientId(clientId);
+        return sinistreService.getSinistresByClientId(clientId);
     }
 
     @PatchMapping("/{sinistreId}/statut")

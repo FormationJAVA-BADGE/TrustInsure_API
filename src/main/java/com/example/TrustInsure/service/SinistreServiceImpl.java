@@ -8,26 +8,29 @@ import com.example.TrustInsure.repository.IContratRepository;
 import com.example.TrustInsure.repository.IDocumentRepository;
 import com.example.TrustInsure.repository.ISinistreRepository;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Service
 public class SinistreServiceImpl implements ISinistreService {
 
     private final ISinistreRepository sinistreRepository;
     private final IContratRepository contratRepository;
     private final IDocumentRepository documentRepository;
-    private final SessionFactory sessionFactory;
 
     public SinistreServiceImpl(ISinistreRepository sinistreRepository,
                                IContratRepository contratRepository,
-                               IDocumentRepository documentRepository,
-                               SessionFactory sessionFactory) {
+                               IDocumentRepository documentRepository
+                               ) {
         this.sinistreRepository = sinistreRepository;
         this.contratRepository = contratRepository;
         this.documentRepository = documentRepository;
-        this.sessionFactory = sessionFactory;
     }
 
     @Override
@@ -68,13 +71,11 @@ public class SinistreServiceImpl implements ISinistreService {
         return convertirEnDTO(sinistre);
     }
 
-
-
     @Override
-    public List<SinistreDTO> getSinistresParContratId(Long contratId) {
-        List<Sinistre> sinistres = sinistreRepository.findByContratId(contratId);
-        return sinistres.stream().map(this::convertirEnDTO).collect(Collectors.toList());
+    public List<SinistreDTO> getSinistresByClientId(Long clientId) {
+        return List.of();
     }
+
 
     @Override
     public SinistreDTO getSinistreById(Long sinistreId) {

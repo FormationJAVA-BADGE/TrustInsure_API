@@ -7,13 +7,17 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
+
+@Repository
 public class SinistreRepositoryImpl implements ISinistreRepository {
 
-    private final SessionFactory sessionFactory;
+    private  SessionFactory sessionFactory;
 
-    public SinistreRepositoryImpl(SessionFactory sessionFactory) {
+    public SinistreRepositoryImpl() {
         this.sessionFactory = sessionFactory;
     }
 
@@ -32,14 +36,7 @@ public class SinistreRepositoryImpl implements ISinistreRepository {
         }
     }
 
-    @Override
-    public List<Sinistre> findByClientId(Long clientId) {
-        try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("FROM Sinistre WHERE client.id = :clientId", Sinistre.class)
-                    .setParameter("clientId", clientId)
-                    .list();
-        }
-    }
+
 
     @Override
     public Sinistre update(Sinistre sinistre) {
@@ -60,7 +57,7 @@ public class SinistreRepositoryImpl implements ISinistreRepository {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("FROM Sinistre s WHERE s.contrat.id = :contratId", Sinistre.class)
                     .setParameter("contratId", contratId)
-                    .list();
+                    .getResultList();
         }
     }
 }

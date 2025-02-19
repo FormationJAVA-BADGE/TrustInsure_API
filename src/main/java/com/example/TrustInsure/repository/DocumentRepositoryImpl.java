@@ -5,14 +5,19 @@ import com.example.TrustInsure.model.Document;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
+
+@Repository
 public class DocumentRepositoryImpl implements IDocumentRepository {
 
-    private final SessionFactory sessionFactory;
+    private  SessionFactory sessionFactory;
 
-    public DocumentRepositoryImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    public DocumentRepositoryImpl() {
+        sessionFactory =HibernateUtils.getSessionFactory();
+
     }
 
     @Override

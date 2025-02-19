@@ -16,7 +16,6 @@ public class Sinistre {
     private String statut; // "En attente", "En cours d'expertise", "Indemnisé"
 
     @ManyToOne
-    @JoinColumn(name = "contrat_id", nullable = false) // ✅ Lien avec un contrat obligatoire
     private Contrat contrat;
 
     @OneToMany(mappedBy = "sinistre", cascade = CascadeType.ALL)

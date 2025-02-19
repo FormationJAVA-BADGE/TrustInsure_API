@@ -2,14 +2,18 @@ package com.example.TrustInsure.repository;
 
 import com.example.TrustInsure.model.Expert;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
+@Repository
 public class ExpertRepositoryImpl implements IExpertRepository {
 
-    private final SessionFactory sessionFactory;
+    private  SessionFactory sessionFactory;
 
-    public ExpertRepositoryImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    public ExpertRepositoryImpl() {
+        sessionFactory =HibernateUtils.getSessionFactory();
+
     }
 
     @Override

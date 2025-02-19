@@ -11,10 +11,11 @@ import java.util.List;
 @Repository
 public class ClientRepositoryImpl implements IClientRepository {
 
-    private final SessionFactory sessionFactory;
+    private  SessionFactory sessionFactory;
 
-    public ClientRepositoryImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    public ClientRepositoryImpl() {
+        sessionFactory =HibernateUtils.getSessionFactory();
+
     }
 
     @Override

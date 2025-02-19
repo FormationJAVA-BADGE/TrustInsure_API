@@ -24,6 +24,7 @@ public class HibernateUtils {
                 metadataSources.addAnnotatedClass(com.example.TrustInsure.model.Contrat.class);
                 metadataSources.addAnnotatedClass(com.example.TrustInsure.model.Expert.class);
                 metadataSources.addAnnotatedClass(com.example.TrustInsure.model.Expertise.class);
+                metadataSources.addAnnotatedClass(com.example.TrustInsure.model.Document.class);
                 metadataSources.addAnnotatedClass(com.example.TrustInsure.model.Indemnisation.class);
                 metadataSources.addAnnotatedClass(com.example.TrustInsure.model.Recours.class);
 

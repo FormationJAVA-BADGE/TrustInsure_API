@@ -7,7 +7,6 @@ import java.util.List;
 public interface ISinistreRepository {
     Sinistre save(Sinistre sinistre);
     Sinistre findById(Long id);
-    List<Sinistre> findByClientId(Long clientId);
     Sinistre update(Sinistre sinistre);
     List<Sinistre> findByContratId(Long contratId);
 }

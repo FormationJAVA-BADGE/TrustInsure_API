@@ -4,14 +4,18 @@ import com.example.TrustInsure.model.Contrat;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
+@Repository
 public class ContratRepositoryImpl implements IContratRepository {
 
-    private final SessionFactory sessionFactory;
+    private  SessionFactory sessionFactory;
 
-    public ContratRepositoryImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    public ContratRepositoryImpl() {
+        sessionFactory =HibernateUtils.getSessionFactory();
+
     }
 
     @Override
